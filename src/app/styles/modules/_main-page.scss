@@ -1,0 +1,60 @@
+.quote {
+    position: absolute;
+    top: 12.5vh;
+    width: 100vw;
+  &__title{
+    text-align: right;
+    font-size: 7.857rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0;
+    position: relative;
+    right: 55.5vw;
+    @media(max-width: 830px) {
+      right: 40.5vw;
+    }
+    @media(max-width: 620px) {
+      right: 30.5vw;
+    }
+    @media(max-width: 520px) {
+      font-size: 5.714rem;
+    }
+    @media(max-width: 400px) {
+      right: 18.5vw; 
+    }
+  }
+  &__text {
+    margin: 0;
+    line-height: 0.8;
+    &--small-size {
+      font-size: 3.857rem;
+      @media(max-width: 520px) {
+        font-size: 2.8571rem;
+      } 
+    }
+    &--blue {
+      color: $brand-primary;
+    }
+  }
+  &__author {
+    position: relative;
+    z-index: 3;
+    font-size: 1rem;
+    color: $gray-dark;
+    font-style: italic;
+    font-family: 'Georgia';
+    text-transform: capitalize;
+  }
+}
+
+
+
+    
+
+
+
+
+
+
+
+

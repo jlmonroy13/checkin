@@ -1,0 +1,168 @@
+.input {
+  width: 97%;
+  border: 2px solid transparent;
+  border-bottom: 2px solid rgba($brand-info, 0.2);
+  background-color: transparent;
+  position: relative;
+  font-size: 1rem;
+  color: $brand-info;
+  &__group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    display: inline-block;
+    &--large {
+      width: 60%;
+      margin-right: 20px;
+    }
+    &--small {
+      width: 30%;
+    }
+    
+    @media(min-width: 401px){
+      margin-bottom: 45px;
+      &--vertical {
+        vertical-align: super;
+        top: -2px;
+      }
+    }
+  }
+  &__label {
+    position: absolute;
+    top:0;
+    left: 0;
+    font-size: 1rem;
+    color: rgba($brand-info, 0.4);
+    text-transform: capitalize;
+    transition: 0.3s;
+    @media(min-width: 401px){
+      font-size: 1.285rem; // 18px
+      top: -10px;
+    }
+  }
+  &--height {
+    height: 22px;
+    @media(min-width: 401px){
+      height: 27px;
+    }
+  }
+  &:focus {
+    outline: none;
+  }
+  @media(min-width: 401px){
+    font-size: 1.285rem; // 18px
+  }
+}
+.form {
+  position: relative;
+  z-index: 2;
+  height: 373px;
+  @media(min-width: 401px){
+    height: 527.91px;
+  }
+}
+.form-padding {
+  padding: 40px 8% 0;
+  @media(min-width: 401px){
+    padding: 70px 8% 0;
+  }
+}
+.input:focus + .input__label {
+  color: $brand-active;
+  transform: scale(0.6) translateY(-22px);
+  transform-origin: center left;
+  text-transform: uppercase;
+}
+.active-input-js {
+  color: $brand-active;
+  transform: scale(0.6) translateY(-22px);
+  transform-origin: center left;
+  text-transform: uppercase;
+}
+.button-submit {
+  display: block;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  padding: 10px 0;
+  font-size: 1rem;
+  padding: 1.071em 0;
+  background-color: $brand-primary;
+  color: $brand-info;
+  border: 1px solid $brand-primary;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+  transition: 1s;
+  @media(min-width: 401px){
+    padding: 1.428em 0;
+  }
+  &:hover {
+    background-color: rgba($brand-primary, 0.7);
+    border: 1px solid rgba($brand-primary, 0.7);
+  }
+}
+.selectize-input, 
+.selectize-control.single .selectize-input.input-active {
+  background-color: transparent !important;
+  width: 99% !important;
+  border: 2px solid transparent !important;
+  border-bottom: 2px solid rgba($brand-info, 0.2) !important;
+  box-shadow: none !important;
+  height: 29px !important;
+  padding: 2px 0px !important;
+}   
+.selectize-input, 
+.selectize-input input {
+  font-size: 1.285rem !important; // 18px
+  color: $brand-info !important;
+  padding: 2px 0px !important;
+}
+.selectize-dropdown, 
+.selectize-input, 
+.selectize-input input {
+  font-size: 1.285rem !important; // 18px
+}
+
+.selectize-control.single .selectize-input:after {
+  border-color: rgba($brand-info, 0.4) transparent transparent transparent !important;
+}
+select {
+  width: 97%;
+  border: 2px solid transparent;
+  border-bottom: 2px solid rgba($brand-info, 0.2);
+  background-color: transparent;
+  font-size: 1rem;
+  color: $brand-info;
+  &:focus {
+    outline: none;
+  }
+}
+.form-shadow {
+  position: absolute;
+  bottom: 5px;
+  width: 85%;
+  height: 30px;
+  background-color: transparent;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 20px 40px 0px rgba(0,0,0,0.44);
+  z-index: 1;
+}
+.textarea {
+  &::-webkit-scrollbar {
+    width: 5px; 
+    background-color: transparent; 
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($brand-info, 0.4); 
+    border-radius: 10px;
+  }
+}
+
+
+
+
+
+
+

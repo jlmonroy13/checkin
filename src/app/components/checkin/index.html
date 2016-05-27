@@ -1,0 +1,100 @@
+<div class="container"> 
+  <div class="container__header">
+    <h1 class="container__title">
+      <span class="container__subtitle">today's</span>
+      check-in
+    </h1>
+    <h1 class="container__title hidden">
+      <span class="container__subtitle visibility-hidden">today's</span>
+      thank you!
+    </h1>
+    <img class="button-menu-mobile button-menu-mobile-js" src="assets/images/mobile-btn.svg" alt="Mobile button hamburger" />
+  </div>
+  <div class="container__form">
+    <form class="form" action="">
+      <div class="form-padding">
+        <div class="input__group effect-select-js">
+          <selectize options='vmCtrl.optionsProjects' config="vmCtrl.configProjectsSelectize" ng-model="id"  ng-disabled='disable' required='true' ng-change="vmCtrl.getProjectId(id)"></selectize>
+          <label class="input__label" for="project">project</label>
+        </div>
+        <div class="input__group input__group--large effect-select-js">
+          <selectize options='vmCtrl.optionsTask' config="vmCtrl.configProjectsSelectize" ng-model="algo" ng-disabled='disable' required='true'></selectize>
+          <label class="input__label" for="task">task</label>
+          </div><!-- 
+        --><div class="input__group input__group--small input__group--vertical">
+          <input class="input input-js" id="duration" type="text" />
+          <label class="input__label" for="duration">duration</label>
+        </div>
+        <div class="input__group">
+        <textarea name="" class="textarea input input-js input--height"></textarea>
+        <label class="input__label" for="workon">what did you work on?</label>
+        </div>
+        <div class="calendar">
+          <h2 class="calendar__title">Selected date:</h2>
+          <p class="calendar__month">{{vmCtrl.selectedDate.dateToDisplay}}</p>
+          <div class="calendar__container">
+            <calendar-week
+              reset-selected-dates="vmCtrl.resetSelectedDates()"
+              date="vmCtrl.selectedDate"
+              week="vmCtrl.selectWeek" />
+            <span class="prev-week sprite sprite--nav-prev" ng-show="vmCtrl.statusButton" ng-click="vmCtrl.changeWeek(vmCtrl.lastWeek)"></span> 
+            <span class="next-week sprite sprite--nav-next" ng-hide="vmCtrl.statusButton" ng-click="vmCtrl.changeWeek(vmCtrl.actualWeek)"></span>
+          </div>
+        </div>
+      </div>  
+      <button class="button-submit" type="submit">add check-in</button>
+    </form>
+    <ul class="navbar navbar-js">
+      <li class="navbar__items"><a class="navbar__links" ui-sref="checkin"><span class="sprite sprite--add-active margin-right--middle vertical-align navbar__icon"></span><span class="navbar__text navbar__text--color vertical-align">New Check-in</span></a></li>
+      <li class="navbar__items"><a class="navbar__links" ui-sref="history"><span class="sprite sprite--history margin-right--middle vertical-align navbar__icon"></span><span class="navbar__text vertical-align">History</span></a></li>
+      <li class="navbar__items"><a class="navbar__links" ui-sref="home"><span class="sprite sprite--logout margin-right--middle vertical-align navbar__icon"></span><span class="navbar__text vertical-align">Logout</span></a></li>
+    </ul>
+    <div class="form-shadow"></div>
+    <div class="container__form--done">
+      <div class="container__form--icon-done">
+        <span class="sprite sprite--done"></span>
+        <p class="container__form--text-done">done!</p> 
+      </div>
+    </div>
+  </div>
+</div>  
+<span class="line line--left"></span>
+<span class="circle circle--left"></span>
+<span class="line line--right"></span>
+<span class="circle circle--right"></span>
+
+<img src="assets/images/koombea-logo.svg" alt="Koombea Logo" class="logo" />
+<script>
+  $(function() {
+    var $input    =     $('.input-js'),
+    $select       =     $('.effect-select-js'),
+    ancho         =     $(window).width(),
+    $mobileMenu   =     $('.button-menu-mobile-js'),
+    $nav          =     $('.navbar-js');
+
+    // Labels inputs effect  
+    $input.blur(function() {
+      if( $(this).val() !== '') {
+        $(this).next('.input__label').addClass('active-input-js');
+      } else {
+        $(this).next('.input__label').removeClass('active-input-js');
+      }
+    });
+    $select.click(function() {
+      $(this).find('.input__label').addClass('active-input-js');
+    }); 
+    
+    //Use selectize plugin only on desktop
+    // if (ancho > 400) {
+    //   $('.js-select').selectize({
+    //     sortField: 'text'
+    //   });
+    // }else if (ancho <= 400) {
+    //   $('.empty-option-js').hide();
+    // }
+    // Mobile Menu
+    $mobileMenu.click(function() {
+      $nav.toggleClass('navbar__mobile');
+    }); 
+  });
+</script>

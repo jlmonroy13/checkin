@@ -1,0 +1,13 @@
+html {font-size: 14px;}
+body {
+  margin: 0;
+  background-size: 100%;
+  background-color: $body-bg;
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
