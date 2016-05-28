@@ -22,7 +22,7 @@ export function checkinCtrl(
   vm.resetSelectedDates          =   resetSelectedDates;
 
   function get2weeks() {
-    vm.dates = getweeksFactory.get2weeks(); //Generate a calendar array of the last two weeks
+    vm.dates = getweeksFactory.get2weeks().reverse(); //Generate a calendar array of the last two weeks
   }
   function getLast12Checkins() {  
     checkinFactory.getTimeBills()//Get last 15 checkins from Netsuite API
@@ -47,10 +47,10 @@ export function checkinCtrl(
     splitDateArray();
   }
   function splitDateArray() { // Split to be able to show actual week or last week
-    vm.lastWeek = vm.dates.reverse();
-    vm.actualWeek = vm.lastWeek.splice(0, 6).reverse();
-    vm.selectWeek = vm.actualWeek.reverse();
-    console.log(vm.selectWeek);
+    vm.actualWeek = vm.dates.slice(6, 12);
+    vm.lastWeek = vm.dates.slice(0, 6);
+    vm.selectWeek = vm.actualWeek;
+    console.log(vm.dates);
     console.log(vm.actualWeek);
     console.log(vm.lastWeek);
   }
@@ -84,16 +84,10 @@ export function checkinCtrl(
     vm.statusButton = !vm.statusButton;
   }
   function resetSelectedDates(data) {
-    console.log('asdasd');
-    alert('asdasd');
-    // angular.forEach(vm.actualWeek, function(date, index) {
-    //   date.selected = false;
-    // });
-    // angular.forEach(vm.lastWeek, function(date, index) {
-    //   date.selected = false;
-    // });
+    angular.forEach(vm.dates, function(date, index) {
+      date.selected = false;
+    });
   }
   getLast12Checkins();
   getProjects();
-  console.warn(vm);
 }

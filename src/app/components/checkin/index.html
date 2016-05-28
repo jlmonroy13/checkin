@@ -36,10 +36,11 @@
             <calendar-week
               reset-selected-dates="vmCtrl.resetSelectedDates()"
               date="vmCtrl.selectedDate"
-              week="vmCtrl.selectWeek" />
+              week="vmCtrl.selectWeek"></calendar-week>
             <span class="prev-week sprite sprite--nav-prev" ng-show="vmCtrl.statusButton" ng-click="vmCtrl.changeWeek(vmCtrl.lastWeek)"></span> 
             <span class="next-week sprite sprite--nav-next" ng-hide="vmCtrl.statusButton" ng-click="vmCtrl.changeWeek(vmCtrl.actualWeek)"></span>
           </div>
+
         </div>
       </div>  
       <button class="button-submit" type="submit">add check-in</button>
