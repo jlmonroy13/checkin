@@ -7,6 +7,7 @@ export function calendarWeek() {
     bindToController: {
       week: '=',
       date: '=',
+      checkin: '=',
       resetSelectedDates: '&'
     },
     controllerAs: "vm",
@@ -28,6 +29,7 @@ export function calendarWeek() {
     function selectDate(date) {
       vm.resetSelectedDates();
       date.selected = true;
+      vm.checkin.time_bill.tran_date = vm.date.dateFormat; //Adding task id to the object for create new checkin
     }
   }
 }

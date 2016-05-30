@@ -18,8 +18,19 @@ export function checkinCtrl(
   vm.selectWeek                  =   [];
   vm.changeWeek                  =   changeWeek;
   vm.statusButton                =   true;
-  vm.selectedDate                =   {dateToDisplay: moment().format('dddd, MMM D')};
+  vm.selectedDate                =   {dateToDisplay: moment().format('dddd, MMM D'),
+                                      day: "hola"};
   vm.resetSelectedDates          =   resetSelectedDates;
+  vm.prueba                      =   prueba;
+  vm.newCheckin                  =   {
+                                      time_bill: {
+                                                  project_id : '',
+                                                  task_id: '',
+                                                  duration: '',
+                                                  tran_date: '',
+                                                  memo: ''
+                                                }
+                                     };
 
   function get2weeks() {
     vm.dates = getweeksFactory.get2weeks().reverse(); //Generate a calendar array of the last two weeks
@@ -50,13 +61,11 @@ export function checkinCtrl(
     vm.actualWeek = vm.dates.slice(6, 12);
     vm.lastWeek = vm.dates.slice(0, 6);
     vm.selectWeek = vm.actualWeek;
-    console.log(vm.dates);
-    console.log(vm.actualWeek);
-    console.log(vm.lastWeek);
   }
   function getProjects() {
     checkinFactory.getUserProjects()
       .then(displayProjects); 
+
   }
   function displayProjects(data) {
     angular.forEach(data.response, function(value, index) {
@@ -67,11 +76,14 @@ export function checkinCtrl(
     vm.optionsTask = [];
     projectId = response;
     getProjectTask(projectId);
+    vm.newCheckin.time_bill.project_id = projectId; //Adding project id to the object for create new checkin
   }
   function getProjectTask(projectId) {
     checkinFactory.getProjectTask(projectId).then(displayTask);
+
   }
   function displayTask(data) {
+    vm.newCheckin.time_bill.task_id = data.response[0].id; //Adding task id to the object for create new checkin
     angular.forEach(data.response, function(value, index) {
       vm.optionsTask.push({value: value.id, text: value.title});
     });
@@ -84,9 +96,15 @@ export function checkinCtrl(
     vm.statusButton = !vm.statusButton;
   }
   function resetSelectedDates(data) {
+    vm.newCheckin.time_bill.tran_date = vm.selectedDate.dateFormat; //Adding task id to the object for create new checkin
+    console.log(vm.selectedDate);
+    console.log(vm.newCheckin);
     angular.forEach(vm.dates, function(date, index) {
       date.selected = false;
     });
+  }
+  function prueba() {
+    console.log(vm.newCheckin);
   }
   getLast12Checkins();
   getProjects();
